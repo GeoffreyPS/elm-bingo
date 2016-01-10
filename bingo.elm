@@ -3,14 +3,13 @@ module Bingo where
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import StartApp.Simple as StartApp
 
 import String exposing (toUpper, repeat, trimRight)
 
 --UPDATE
 
-type Action
-  = NoOp
-  | Sort --union-type
+type Action = NoOp | Sort --union-type
 
 update action model =
   case action of
@@ -68,17 +67,16 @@ entryItem entry =
 entryList entries =
   ul [ ] (List.map entryItem entries)
 
-view model = 
+view address model = 
   div [ id "container"]
     [ pageHeader
     , entryList model.entries
+    , button 
+      [ class "sort", onClick address Sort ]
+      [ text "Sort" ]
     , pageFooter
     ]
 
 --WIRE IT ALL TOGETHER
 
-main = 
-  --view (update Sort initialModel)
-  initialModel
-  |> update Sort
-  |> view
+main = StartApp.start { model = initialModel, view = view, update = update }
