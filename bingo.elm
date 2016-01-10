@@ -6,6 +6,22 @@ import Html.Events exposing (..)
 
 import String exposing (toUpper, repeat, trimRight)
 
+--UPDATE
+
+type Action
+  = NoOp
+  | Sort --union-type
+
+update action model =
+  case action of
+    NoOp ->
+      model
+
+    Sort ->
+      { model | entries = List.sortBy .points model.entries }
+
+
+
 -- MODEL
 initialModel = 
   { entries = 
@@ -62,5 +78,7 @@ view model =
 --WIRE IT ALL TOGETHER
 
 main = 
-  view initialModel
-
+  --view (update Sort initialModel)
+  initialModel
+  |> update Sort
+  |> view

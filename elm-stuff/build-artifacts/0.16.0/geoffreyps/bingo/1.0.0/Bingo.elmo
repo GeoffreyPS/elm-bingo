@@ -37,7 +37,11 @@ Elm.Bingo.make = function (_elm) {
                                         ,A3(newEntry,"Future-Proof",100,1)
                                         ,A3(newEntry,"Rock-Star Ninja",400,4)])};
    var main = view(initialModel);
+   var Sort = {ctor: "Sort"};
+   var NoOp = {ctor: "NoOp"};
    return _elm.Bingo.values = {_op: _op
+                              ,NoOp: NoOp
+                              ,Sort: Sort
                               ,initialModel: initialModel
                               ,newEntry: newEntry
                               ,title: title
