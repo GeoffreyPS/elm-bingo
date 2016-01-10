@@ -12,8 +12,8 @@ Elm.Repl.make = function (_elm) {
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
    var tsol = {ctor: "_Tuple0"};
-   var numbers = _U.range(-2,3);
-   var isNegative = function (n) {    return _U.cmp(n,0) < 0;};
-   var deltron3030 = A2($List.filter,function (n) {    return _U.eq(n,1);},numbers);
-   return _elm.Repl.values = {_op: _op,deltron3030: deltron3030,isNegative: isNegative,numbers: numbers,tsol: tsol};
+   var multiply = F2(function (x,y) {    return x * y;});
+   var triple = multiply(3);
+   var deltron3030 = triple(4);
+   return _elm.Repl.values = {_op: _op,deltron3030: deltron3030,multiply: multiply,triple: triple,tsol: tsol};
 };
